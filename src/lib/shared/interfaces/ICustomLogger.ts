@@ -1,5 +1,8 @@
 import { ILogDetail } from './ILogDetail';
 
+/**
+ * Custom logger for application, use default Logger of nestjs behind
+ * */
 export interface ICustomLogger {
   /**
    * Write a 'log' level log.

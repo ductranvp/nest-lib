@@ -1,6 +1,9 @@
 import { IPageRequest } from './IPageRequest';
 import { IPageResponse } from './IPageResponse';
 
+/**
+ * Base repository for most repository needing basic crud
+ * */
 export interface IBaseRepository<T> {
   /**
    * Create one resource
