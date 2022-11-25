@@ -2,5 +2,10 @@
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
-  "entryFile": "dev/main.js"
+  "entryFile": "dev/main.js",
+  "compilerOptions": {
+    "assets": [
+      { "include": "dev/i18n/**/*", "watchAssets": true }
+    ]
+  }
 }

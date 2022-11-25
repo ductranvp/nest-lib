@@ -16,12 +16,14 @@ interface ErrorMessages {
 export interface NestReadyOptions {
   useCustomFilter?: boolean;
   useGlobalFilter?: boolean;
+  useI18nOnFilter?: boolean;
   errorMessages?: ErrorMessages;
 }
 
 const defaultOptions: NestReadyOptions = {
   useCustomFilter: true,
   useGlobalFilter: true,
+  useI18nOnFilter: true,
   errorMessages: {
     internalErrorMessage: 'Internal Server Error',
   },

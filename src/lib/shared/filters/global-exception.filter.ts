@@ -11,6 +11,7 @@ import { IResponseError } from '../interfaces';
 import { NestReadyOptions } from '../../nest-ready.module';
 import { MODULE_OPTION_KEY } from '../constants';
 import { CustomLogger } from '../utils';
+import { getI18nContextFromArgumentsHost } from 'nestjs-i18n';
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
@@ -31,6 +32,17 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     }
 
     this.logger.error({ message: exception.message, stack: exception.stack });
+
+    if (this.options.useI18nOnFilter) {
+      try {
+        const i18n = getI18nContextFromArgumentsHost(host);
+        message = i18n.t(message, {
+          args: exception.args || {},
+        });
+      } catch (ex) {
+        this.logger.error({ message: 'Translation error', stack: ex.stack });
+      }
+    }
 
     const errorBody: IResponseError = {
       error: {

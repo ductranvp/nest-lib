@@ -14,4 +14,9 @@ export interface IErrorDetail {
    * More data for the error
    * */
   data?: any;
+
+  /**
+   * Translate args for i18n
+   * */
+  args?: any;
 }

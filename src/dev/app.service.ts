@@ -10,7 +10,7 @@ export class AppService {
   testException(): string {
     throw new CustomException(HttpStatus.BAD_REQUEST, {
       code: '400',
-      message: 'Bad request',
+      message: 'account.notFound',
     });
   }
 }

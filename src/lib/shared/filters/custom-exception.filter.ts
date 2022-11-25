@@ -5,6 +5,7 @@ import { IResponseError } from '../interfaces';
 import { NestReadyOptions } from '../../nest-ready.module';
 import { MODULE_OPTION_KEY } from '../constants';
 import { CustomLogger } from '../utils';
+import { getI18nContextFromArgumentsHost } from 'nestjs-i18n';
 
 @Catch(CustomException)
 export class CustomExceptionFilter implements ExceptionFilter {
@@ -15,10 +16,22 @@ export class CustomExceptionFilter implements ExceptionFilter {
   catch(exception: CustomException, host: ArgumentsHost): any {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
+
     this.logger.error({
-      message: exception.error?.message,
+      message: exception.error.message,
       stack: exception.stack,
     });
+
+    if (this.options.useI18nOnFilter) {
+      try {
+        const i18n = getI18nContextFromArgumentsHost(host);
+        exception.error.message = i18n.t(exception.error.message, {
+          args: exception.error.args || {},
+        });
+      } catch (ex) {
+        this.logger.error({ message: 'Translation error', stack: ex.stack });
+      }
+    }
 
     const { statusCode, error } = exception;
 
