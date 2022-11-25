@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { getWinstonLoggerService } from '../lib';
-import { TransformInterceptor } from '../lib/shared/interceptors';
+import { TransformInterceptor } from '../lib';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

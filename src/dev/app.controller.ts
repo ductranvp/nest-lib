@@ -12,4 +12,10 @@ export class AppController {
     this.logger.log('Get hello');
     return this.appService.getHello();
   }
+
+  @Get('exception')
+  testException(): string {
+    this.logger.log('Test exception');
+    return this.appService.testException();
+  }
 }

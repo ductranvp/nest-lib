@@ -6,9 +6,11 @@ import {
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerMiddleware } from '../lib/shared/middlewares';
+import { LoggerMiddleware } from '../lib';
+import { NestReadyModule } from '../lib/nest-ready.module';
 
 @Module({
+  imports: [NestReadyModule.register()],
   controllers: [AppController],
   providers: [AppService],
 })
