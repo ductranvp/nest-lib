@@ -1,5 +1,5 @@
 {
-  "name": "nest-ready",
+  "name": "@node-collection/nest-ready",
   "version": "0.0.1",
   "description": "Handy components, configs, utils,... for nestjs based projects",
   "author": "Duc Tran",
@@ -11,8 +11,7 @@
     "build": "rimraf dist && nest build",
     "dev": "rimraf dist && nest start --watch",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "postinstall": "husky install"
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
