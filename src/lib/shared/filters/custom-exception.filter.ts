@@ -1,6 +1,6 @@
 import { ArgumentsHost, Catch, ExceptionFilter, Inject } from '@nestjs/common';
 import { CustomException } from '../exceptions';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { IResponseError } from '../interfaces';
 import { NestReadyOptions } from '../../nest-ready.module';
 import { MODULE_OPTION_KEY } from '../constants';
@@ -16,6 +16,7 @@ export class CustomExceptionFilter implements ExceptionFilter {
   catch(exception: CustomException, host: ArgumentsHost): any {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
 
     this.logger.error({
       message: exception.error.message,

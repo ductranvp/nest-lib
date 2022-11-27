@@ -6,7 +6,7 @@ import {
   HttpStatus,
   Inject,
 } from '@nestjs/common';
-import { Response } from 'express';
+import { Response, Request } from 'express';
 import { IResponseError } from '../interfaces';
 import { NestReadyOptions } from '../../nest-ready.module';
 import { MODULE_OPTION_KEY } from '../constants';
@@ -22,6 +22,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
   catch(exception: any, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
 
     let statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
     let message = this.options.errorMessages.internalErrorMessage;
