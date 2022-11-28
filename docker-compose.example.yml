@@ -1,0 +1,14 @@
+version: "3"
+services:
+  nexus:
+    container_name: nest-ready-nexus
+    image: sonatype/nexus3
+    restart: always
+    volumes:
+      - nexus:/nexus-data
+    ports:
+      - 8082:8081
+
+volumes:
+  nexus:
+    driver: local
