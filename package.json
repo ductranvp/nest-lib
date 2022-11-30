@@ -1,5 +1,5 @@
 {
-  "name": "@node-hub/nest-lib",
+  "name": "@devhub/nest-lib",
   "version": "0.0.1",
   "description": "Handy components, configs, utils,... for nestjs based projects",
   "author": "Duc Tran",
