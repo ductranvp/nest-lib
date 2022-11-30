@@ -1,0 +1,2 @@
+@node-hub:registry=http://localhost:8082/repository/private-hosted/
+registry=https://registry.npmjs.org
