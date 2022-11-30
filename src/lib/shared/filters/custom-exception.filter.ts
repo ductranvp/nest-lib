@@ -2,7 +2,7 @@ import { ArgumentsHost, Catch, ExceptionFilter, Inject } from '@nestjs/common';
 import { CustomException } from '../exceptions';
 import { Response } from 'express';
 import { IResponseError } from '../interfaces';
-import { NestReadyOptions } from '../../nest-ready.module';
+import { NestLibOptions } from '../../nest-lib.module';
 import { MODULE_OPTION_KEY } from '../constants';
 import { CustomLogger } from '../utils';
 import { getI18nContextFromArgumentsHost } from 'nestjs-i18n';
@@ -11,7 +11,7 @@ import { getI18nContextFromArgumentsHost } from 'nestjs-i18n';
 export class CustomExceptionFilter implements ExceptionFilter {
   private readonly logger = new CustomLogger(CustomExceptionFilter.name);
 
-  constructor(@Inject(MODULE_OPTION_KEY) private options: NestReadyOptions) {}
+  constructor(@Inject(MODULE_OPTION_KEY) private options: NestLibOptions) {}
 
   catch(exception: CustomException, host: ArgumentsHost): any {
     const ctx = host.switchToHttp();

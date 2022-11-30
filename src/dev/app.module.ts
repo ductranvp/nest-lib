@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerMiddleware, NestReadyModule } from '../lib';
+import { LoggerMiddleware, NestLibModule } from '../lib';
 import { I18nModule } from 'nestjs-i18n';
 import { i18nConfig } from './configs/i18n.config';
 
 @Module({
-  imports: [NestReadyModule.register(), I18nModule.forRoot(i18nConfig)],
+  imports: [NestLibModule.register(), I18nModule.forRoot(i18nConfig)],
   controllers: [AppController],
   providers: [AppService],
 })

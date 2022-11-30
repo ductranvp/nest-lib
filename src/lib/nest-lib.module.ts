@@ -13,14 +13,14 @@ interface ErrorMessages {
   internalErrorMessage?: string;
 }
 
-export interface NestReadyOptions {
+export interface NestLibOptions {
   useCustomFilter?: boolean;
   useGlobalFilter?: boolean;
   useI18nOnFilter?: boolean;
   errorMessages?: ErrorMessages;
 }
 
-const defaultOptions: NestReadyOptions = {
+const defaultOptions: NestLibOptions = {
   useCustomFilter: true,
   useGlobalFilter: true,
   useI18nOnFilter: true,
@@ -29,9 +29,9 @@ const defaultOptions: NestReadyOptions = {
   },
 };
 
-export class NestReadyModule {
-  static register(options?: NestReadyOptions): DynamicModule {
-    const mergedOptions: NestReadyOptions = {
+export class NestLibModule {
+  static register(options?: NestLibOptions): DynamicModule {
+    const mergedOptions: NestLibOptions = {
       ...defaultOptions,
       ...options,
       errorMessages: {
@@ -67,7 +67,7 @@ export class NestReadyModule {
     return {
       imports: imports,
       providers: providers,
-      module: NestReadyModule,
+      module: NestLibModule,
     };
   }
 }
