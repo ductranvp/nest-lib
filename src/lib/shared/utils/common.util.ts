@@ -1,9 +1,3 @@
-import { v4 as uuid4 } from 'uuid';
-
-export function uuid(): string {
-  return uuid4();
-}
-
 export function getString(value: string): string {
   return value.replace(/\\n/g, '\n');
 }
