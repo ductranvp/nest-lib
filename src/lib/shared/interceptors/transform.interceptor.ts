@@ -6,8 +6,8 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CustomLogger } from 'src/lib/shared/utils/custom-logger.util';
 import { IResponseSuccess, IResponseLogging } from '../interfaces';
+import { CustomLogger } from '../utils';
 
 export interface Response<T> {
   data: T;
